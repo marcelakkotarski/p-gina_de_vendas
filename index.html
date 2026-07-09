@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Receitas de Tricorumi: bichinhos afetivos feitos em tricô, com a fofura do amigurumi e a maciez do tricô.">
+  <meta name="theme-color" content="#f3b7a7">
+  <meta property="og:title" content="Tricorumi — seu tricô pode ir além">
+  <meta property="og:description" content="Aprenda a criar bichinhos afetivos em tricô com receitas digitais de Tricorumi.">
+  <meta property="og:type" content="website">
+  <title>Tricorumi | Seu tricô pode ir além</title>
+
+  <!--
+    Página otimizada:
+    - Sem Google Fonts, evitando bloqueio de renderização.
+    - Sem JavaScript, eliminando risco de reflow forçado.
+    - Imagens locais, com largura/altura definidas, lazy loading e decoding async.
+    - CSS crítico no próprio arquivo, ideal para GitHub Pages e páginas simples.
+  -->
+  <style>
+    :root {
+      --fundo: #fff9f5;
+      --fundo-2: #f7eadf;
+      --texto: #402d26;
+      --texto-suave: #6f5a50;
+      --rosa: #f3b7a7;
+      --rosa-forte: #df7f71;
+      --salvia: #b8c7a4;
+      --salvia-escuro: #6c7b5b;
+      --creme: #fff3df;
+      --laranja: #f4a261;
+      --marrom: #8a5a44;
+      --branco: #ffffff;
+      --sombra: 0 18px 45px rgba(83, 58, 43, .14);
+      --raio: 28px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--texto);
+      background:
+        radial-gradient(circle at top left, rgba(243, 183, 167, .38), transparent 30rem),
+        linear-gradient(180deg, var(--fundo), #fffefe 45%, var(--fundo));
+      line-height: 1.55;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a { color: inherit; }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin-inline: auto;
+    }
+
+    .topo {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 249, 245, .88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(138, 90, 68, .1);
+    }
+
+    .menu {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .marca {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      font-size: clamp(1.35rem, 2vw, 1.75rem);
+    }
+
+    .marca span:first-child {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      background: var(--rosa);
+      box-shadow: 0 10px 24px rgba(223, 127, 113, .2);
+    }
+
+    .links-topo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .link-mini,
+    .botao {
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .link-mini {
+      padding: 9px 13px;
+      color: var(--texto-suave);
+      background: rgba(255, 255, 255, .55);
+      border: 1px solid rgba(138, 90, 68, .1);
+      font-size: .92rem;
+    }
+
+    .link-mini:hover,
+    .botao:hover {
+      transform: translateY(-2px);
+    }
+
+    .botao {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 22px;
+      border: 0;
+      background: var(--texto);
+      color: var(--branco);
+      box-shadow: 0 14px 30px rgba(64, 45, 38, .22);
+    }
+
+    .botao.secundario {
+      background: var(--branco);
+      color: var(--texto);
+      border: 1px solid rgba(138, 90, 68, .15);
+      box-shadow: none;
+    }
+
+    .botao.claro {
+      background: var(--creme);
+      color: var(--texto);
+      box-shadow: none;
+    }
+
+    .hero {
+      padding: clamp(44px, 7vw, 86px) 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr);
+      gap: clamp(28px, 5vw, 64px);
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(184, 199, 164, .32);
+      color: var(--salvia-escuro);
+      font-weight: 900;
+      font-size: .95rem;
+      margin-bottom: 18px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.05;
+      letter-spacing: -.05em;
+    }
+
+    h1 {
+      font-size: clamp(2.45rem, 7vw, 5.6rem);
+      max-width: 10ch;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      max-width: 13ch;
+    }
+
+    h3 {
+      font-size: 1.35rem;
+      letter-spacing: -.03em;
+    }
+
+    .subtitulo {
+      max-width: 58ch;
+      margin: 20px 0 0;
+      font-size: clamp(1.06rem, 2vw, 1.28rem);
+      color: var(--texto-suave);
+    }
+
+    .acoes {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .prova {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+      max-width: 640px;
+    }
+
+    .prova div {
+      background: rgba(255, 255, 255, .72);
+      border: 1px solid rgba(138, 90, 68, .1);
+      border-radius: 20px;
+      padding: 14px;
+      box-shadow: 0 12px 26px rgba(83, 58, 43, .07);
+    }
+
+    .prova strong {
+      display: block;
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .prova span {
+      color: var(--texto-suave);
+      font-size: .92rem;
+    }
+
+    .vitrine-hero {
+      position: relative;
+      min-height: 520px;
+      border-radius: var(--raio);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.78), rgba(255,243,223,.78)),
+        radial-gradient(circle at 50% 18%, rgba(184,199,164,.65), transparent 15rem);
+      box-shadow: var(--sombra);
+      overflow: hidden;
+      border: 1px solid rgba(138, 90, 68, .12);
+    }
+
+    .vitrine-hero::before {
+      content: "";
+      position: absolute;
+      inset: 28px;
+      border: 2px dashed rgba(138, 90, 68, .16);
+      border-radius: 24px;
+    }
+
+    .produto-destaque {
+      position: absolute;
+      width: 62%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 22px 45px rgba(83, 58, 43, .18);
+      background: var(--branco);
+    }
+
+    .selo {
+      position: absolute;
+      right: 28px;
+      bottom: 28px;
+      max-width: 210px;
+      padding: 18px;
+      border-radius: 24px;
+      background: var(--texto);
+      color: var(--branco);
+      font-weight: 800;
+      box-shadow: 0 18px 35px rgba(64, 45, 38, .22);
+    }
+
+    .bolinha {
+      position: absolute;
+      border-radius: 999px;
+      background: var(--rosa);
+      opacity: .7;
+    }
+
+    .bolinha.um { width: 96px; height: 96px; left: 30px; bottom: 70px; }
+    .bolinha.dois { width: 54px; height: 54px; right: 64px; top: 74px; background: var(--salvia); }
+    .bolinha.tres { width: 32px; height: 32px; left: 80px; top: 62px; background: var(--laranja); }
+
+    section {
+      padding: clamp(44px, 7vw, 84px) 0;
+    }
+
+    .secao-cabecalho {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 26px;
+    }
+
+    .secao-cabecalho p {
+      max-width: 56ch;
+      color: var(--texto-suave);
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, .78);
+      border: 1px solid rgba(138, 90, 68, .1);
+      border-radius: var(--raio);
+      padding: 22px;
+      box-shadow: 0 12px 30px rgba(83, 58, 43, .08);
+    }
+
+    .card .icone {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: var(--creme);
+      font-size: 1.45rem;
+      margin-bottom: 14px;
+    }
+
+    .card p,
+    .produto p,
+    .faq p {
+      color: var(--texto-suave);
+      margin: 10px 0 0;
+    }
+
+    .faixa {
+      background:
+        linear-gradient(135deg, rgba(184,199,164,.35), rgba(243,183,167,.34)),
+        var(--fundo-2);
+      border-block: 1px solid rgba(138, 90, 68, .09);
+    }
+
+    .passos {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      counter-reset: passo;
+    }
+
+    .passo {
+      counter-increment: passo;
+      border-radius: var(--raio);
+      background: rgba(255,255,255,.7);
+      padding: 22px;
+      border: 1px solid rgba(138, 90, 68, .1);
+    }
+
+    .passo::before {
+      content: counter(passo);
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--texto);
+      color: var(--branco);
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .produtos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .produto {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: var(--raio);
+      background: var(--branco);
+      border: 1px solid rgba(138, 90, 68, .1);
+      box-shadow: var(--sombra);
+    }
+
+    .foto-wrap {
+      background: linear-gradient(145deg, var(--creme), rgba(184,199,164,.35));
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .foto-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .produto-conteudo {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .produto-conteudo .botao {
+      margin-top: auto;
+      width: 100%;
+    }
+
+    .preco {
+      display: inline-flex;
+      width: fit-content;
+      margin: 14px 0 18px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(243, 183, 167, .25);
+      color: var(--marrom);
+      font-weight: 900;
+      font-size: .92rem;
+    }
+
+    .depoimento {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: clamp(22px, 5vw, 54px);
+      align-items: center;
+      border-radius: calc(var(--raio) + 8px);
+      background: var(--texto);
+      color: var(--branco);
+      padding: clamp(28px, 5vw, 56px);
+      box-shadow: 0 22px 45px rgba(64, 45, 38, .2);
+    }
+
+    .depoimento p {
+      font-size: clamp(1.35rem, 3vw, 2.1rem);
+      line-height: 1.2;
+      margin: 0;
+      letter-spacing: -.035em;
+      font-weight: 850;
+    }
+
+    .depoimento small {
+      color: rgba(255,255,255,.78);
+    }
+
+    .lista-bonita {
+      display: grid;
+      gap: 14px;
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .lista-bonita li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: rgba(255,255,255,.84);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .faq {
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(138, 90, 68, .1);
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .cta-final {
+      text-align: center;
+      border-radius: calc(var(--raio) + 10px);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255,255,255,.38), transparent 18rem),
+        linear-gradient(135deg, var(--rosa), var(--salvia));
+      padding: clamp(34px, 7vw, 72px) 24px;
+      box-shadow: var(--sombra);
+    }
+
+    .cta-final h2 {
+      max-width: 12ch;
+      margin-inline: auto;
+    }
+
+    .cta-final p {
+      max-width: 58ch;
+      margin: 18px auto 0;
+      color: rgba(64,45,38,.82);
+      font-size: 1.12rem;
+    }
+
+    footer {
+      padding: 34px 0;
+      color: var(--texto-suave);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .depoimento {
+        grid-template-columns: 1fr;
+      }
+
+      h1 { max-width: 12ch; }
+
+      .vitrine-hero { min-height: 430px; }
+
+      .cards,
+      .produtos,
+      .passos {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .secao-cabecalho {
+        display: block;
+      }
+
+      .secao-cabecalho p {
+        margin-top: 12px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 24px, var(--max)); }
+
+      .menu {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .links-topo { justify-content: flex-start; }
+
+      .hero { padding-top: 32px; }
+
+      .prova,
+      .cards,
+      .produtos,
+      .passos,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .produto-destaque { width: 76%; }
+
+      .selo {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        max-width: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topo">
+    <div class="container menu" aria-label="Menu principal">
+      <a class="marca" href="#inicio" aria-label="Ir para o início da página Tricorumi">
+        <span aria-hidden="true">🧶</span>
+        <span>Tricorumi</span>
+      </a>
+
+      <nav class="links-topo" aria-label="Links de contato">
+        <a class="link-mini" href="https://www.instagram.com/marcela_kotarski/" target="_blank" rel="noopener">Instagram</a>
+        <a class="link-mini" href="http://www.youtube.com/@tricorumi" target="_blank" rel="noopener">YouTube</a>
+        <a class="link-mini" href="https://wa.me/5543988656990" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="tag">✨ A inovação do amigurumi, com a maciez do tricô</div>
+          <h1>Seu tricô pode ir além</h1>
+          <p class="subtitulo">Aprenda a criar bichinhos afetivos em tricô com receitas digitais pensadas para quem ama transformar fios em peças fofas, vendáveis e cheias de encanto.</p>
+
+          <div class="acoes">
+            <a class="botao" href="#receitas">Ver receitas 🧸</a>
+            <a class="botao secundario" href="https://wa.me/5543988656990" target="_blank" rel="noopener">Tirar dúvida no WhatsApp</a>
+          </div>
+
+          <div class="prova" aria-label="Destaques da página">
+            <div><strong>6+</strong><span>personagens fofinhos</span></div>
+            <div><strong>PDF</strong><span>receitas digitais</span></div>
+            <div><strong>Tricô</strong><span>com toque afetivo</span></div>
+          </div>
+        </div>
+
+        <div class="vitrine-hero" aria-label="Imagem de destaque do Tricorumi">
+          <span class="bolinha um" aria-hidden="true"></span>
+          <span class="bolinha dois" aria-hidden="true"></span>
+          <span class="bolinha tres" aria-hidden="true"></span>
+          <div class="produto-destaque">
+            <img src="assets/destaque-tricorumi.svg" width="720" height="720" alt="Ilustração de bichinhos de tricô Tricorumi" fetchpriority="high" decoding="async">
+          </div>
+          <div class="selo">Bichinhos com carinha de abraço e acabamento de peça especial.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="secao-cabecalho">
+          <h2>Por que Tricorumi?</h2>
+          <p>Porque ele une a fofura do amigurumi com a textura gostosa do tricô. É diferente, encantador e chama atenção de quem procura uma peça artesanal com personalidade.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="icone" aria-hidden="true">🧶</div>
+            <h3>Um jeito novo de tricotar</h3>
+            <p>Você sai da touca e do cachecol e entra no mundo dos personagens em tricô.</p>
+          </article>
+          <article class="card">
+            <div class="icone" aria-hidden="true">🤍</div>
+            <h3>Peças afetivas</h3>
+            <p>Cada bichinho nasce com cara de presente, memória e abraço de vó estilosa.</p>
+          </article>
+          <article class="card">
+            <div class="icone" aria-hidden="true">🛍️</div>
+            <h3>Potencial de venda</h3>
+            <p>Receitas com personagens desejáveis, perfeitas para criar, presentear e vender.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faixa">
+      <div class="container">
+        <div class="secao-cabecalho">
+          <h2>Como funciona</h2>
+          <p>Você escolhe a receita, acessa o material digital e começa a tricotar no seu ritmo. Sem complicação e sem a página demorar igual fila de mercado em véspera de feriado.</p>
+        </div>
+
+        <div class="passos">
+          <article class="passo">
+            <h3>Escolha</h3>
+            <p>Veja os personagens disponíveis e escolha o bichinho que combina com seu momento.</p>
+          </article>
+          <article class="passo">
+            <h3>Acesse</h3>
+            <p>Após a compra, você recebe o acesso ao conteúdo digital pela plataforma.</p>
+          </article>
+          <article class="passo">
+            <h3>Tricote</h3>
+            <p>Siga a receita com calma, respeitando seu ritmo e seu cafezinho.</p>
+          </article>
+          <article class="passo">
+            <h3>Encante</h3>
+            <p>Finalize seu bichinho e prepare-se para ouvir: “foi você que fez?”</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="receitas">
+      <div class="container">
+        <div class="secao-cabecalho">
+          <h2>Escolha sua receita</h2>
+          <p>Os cards abaixo estão com imagens locais e leves. Para usar suas fotos reais, basta substituir os arquivos dentro da pasta <strong>assets</strong> mantendo os mesmos nomes.</p>
+        </div>
+
+        <div class="produtos">
+          <article class="produto">
+            <div class="foto-wrap">
+              <img src="assets/capivara.svg" width="640" height="480" alt="Receita da Capivara Fofo em Tricorumi" loading="lazy" decoding="async">
+            </div>
+            <div class="produto-conteudo">
+              <h3>Capivara Fofo</h3>
+              <p>Uma personagem carismática para quem ama peças delicadas, atuais e com muita personalidade.</p>
+              <span class="preco">PDF digital</span>
+              <a class="botao" href="https://pay.kiwify.com.br/qAjTv46" target="_blank" rel="noopener">Comprar receita</a>
+            </div>
+          </article>
+
+          <article class="produto">
+            <div class="foto-wrap">
+              <img src="assets/urso-oliver.svg" width="640" height="480" alt="Receita do Urso Oliver em Tricorumi" loading="lazy" decoding="async">
+            </div>
+            <div class="produto-conteudo">
+              <h3>Urso Oliver</h3>
+              <p>Um ursinho clássico, fofo e com acabamento de peça especial para presentear ou vender.</p>
+              <span class="preco">PDF digital</span>
+              <a class="botao" href="https://pay.kiwify.com.br/j05HGEg" target="_blank" rel="noopener">Comprar receita</a>
+            </div>
+          </article>
+
+          <article class="produto">
+            <div class="foto-wrap">
+              <img src="assets/coelha-aurora.svg" width="640" height="480" alt="Receita da Coelha Aurora em Tricorumi" loading="lazy" decoding="async">
+            </div>
+            <div class="produto-conteudo">
+              <h3>Coelha Aurora</h3>
+              <p>Delicada, charmosa e perfeita para quem gosta de personagens com jeitinho de mimo.</p>
+              <span class="preco">PDF digital</span>
+              <a class="botao" href="https://pay.kiwify.com.br/5U9gq43" target="_blank" rel="noopener">Comprar receita</a>
+            </div>
+          </article>
+
+          <article class="produto">
+            <div class="foto-wrap">
+              <img src="assets/coelho-bento.svg" width="640" height="480" alt="Receita do Coelho Bento em Tricorumi" loading="lazy" decoding="async">
+            </div>
+            <div class="produto-conteudo">
+              <h3>Coelho Bento</h3>
+              <p>Um coelhinho afetivo, ótimo para datas comemorativas e peças com visual encantador.</p>
+              <span class="preco">PDF digital</span>
+              <a class="botao" href="https://pay.kiwify.com.br/lStNnac" target="_blank" rel="noopener">Comprar receita</a>
+            </div>
+          </article>
+
+          <article class="produto">
+            <div class="foto-wrap">
+              <img src="assets/ratinha-bella.svg" width="640" height="480" alt="Receita da Ratinha Bella em Tricorumi" loading="lazy" decoding="async">
+            </div>
+            <div class="produto-conteudo">
+              <h3>Ratinha Bella</h3>
+              <p>Uma personagem meiga, expressiva e cheia de charme para variar sua coleção.</p>
+              <span class="preco">PDF digital</span>
+              <a class="botao" href="https://pay.kiwify.com.br/4y1oXuR" target="_blank" rel="noopener">Comprar receita</a>
+            </div>
+          </article>
+
+          <article class="produto">
+            <div class="foto-wrap">
+              <img src="assets/patinha-penelope.svg" width="640" height="480" alt="Receita da Patinha Penélope em Tricorumi" loading="lazy" decoding="async">
+            </div>
+            <div class="produto-conteudo">
+              <h3>Patinha Penélope</h3>
+              <p>Fofa, doce e com aquele estilo que faz a pessoa sorrir antes mesmo de terminar.</p>
+              <span class="preco">PDF digital</span>
+              <a class="botao" href="https://pay.kiwify.com.br/yaq4Y8y" target="_blank" rel="noopener">Comprar receita</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container depoimento">
+        <div>
+          <span class="tag">🧸 Para tricoteiras criativas</span>
+          <p>Você não precisa abandonar o tricô tradicional. Você pode expandir o que já sabe e transformar fio em personagem.</p>
+        </div>
+        <div>
+          <ul class="lista-bonita">
+            <li><span aria-hidden="true">✓</span><span>Ideal para quem quer criar peças diferentes e afetivas.</span></li>
+            <li><span aria-hidden="true">✓</span><span>Perfeito para artesãs que desejam variar o catálogo.</span></li>
+            <li><span aria-hidden="true">✓</span><span>Uma forma de mostrar que o tricô também pode ser moderno, fofo e vendável.</span></li>
+          </ul>
+          <p style="font-size:1rem;letter-spacing:0;margin-top:18px;"><small>Tricorumi é para quem olha para um novelo e pensa: “dá para fazer coisa linda daqui”.</small></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="secao-cabecalho">
+          <h2>Dúvidas rápidas</h2>
+          <p>Antes que a ansiedade artesanal comece a tricotar sozinha, aqui vão as respostas mais importantes.</p>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq">
+            <h3>As receitas são digitais?</h3>
+            <p>Sim. Os materiais são digitais e o acesso acontece pela plataforma de compra.</p>
+          </article>
+          <article class="faq">
+            <h3>Preciso saber muito tricô?</h3>
+            <p>É indicado já ter alguma familiaridade com tricô para aproveitar melhor as receitas.</p>
+          </article>
+          <article class="faq">
+            <h3>Posso vender as peças prontas?</h3>
+            <p>Sim, você pode vender as peças que produzir manualmente a partir das receitas.</p>
+          </article>
+          <article class="faq">
+            <h3>Onde tiro dúvidas?</h3>
+            <p>Você pode chamar pelo WhatsApp ou acompanhar os conteúdos no Instagram e YouTube.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container cta-final">
+        <h2>Comece pelo bichinho que roubou seu coração</h2>
+        <p>Escolha uma receita, prepare suas agulhas e venha descobrir como o Tricorumi pode deixar seu artesanato ainda mais encantador.</p>
+        <div class="acoes" style="justify-content:center;">
+          <a class="botao" href="#receitas">Escolher minha receita</a>
+          <a class="botao claro" href="https://wa.me/5543988656990" target="_blank" rel="noopener">Falar com a Marcela</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© Tricorumi — Receitas de bichinhos em tricô. Feito com fio, afeto e zero Google Fonts segurando a página 😄</p>
+    </div>
+  </footer>
+</body>
+</html>

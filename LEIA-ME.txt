@@ -1,0 +1,24 @@
+PÁGINA DE VENDAS TRICORUMI — VERSÃO OTIMIZADA
+
+O que foi corrigido:
+1. Removido Google Fonts externo para evitar solicitação bloqueando renderização.
+2. Removido JavaScript para evitar reflow forçado.
+3. Imagens estão locais, com largura e altura definidas.
+4. Imagens abaixo da primeira dobra usam loading="lazy" e decoding="async".
+5. CSS está no próprio index.html para reduzir dependências externas.
+
+Como usar no GitHub Pages:
+1. Suba o arquivo index.html.
+2. Suba também a pasta assets.
+3. Para trocar as ilustrações pelas fotos reais, substitua os arquivos dentro da pasta assets mantendo os mesmos nomes:
+   - destaque-tricorumi.svg
+   - capivara.svg
+   - urso-oliver.svg
+   - coelha-aurora.svg
+   - coelho-bento.svg
+   - ratinha-bella.svg
+   - patinha-penelope.svg
+
+Dica:
+Se usar fotos reais, prefira .webp com menos de 250 KB cada.
+Depois altere no index.html o final do nome do arquivo de .svg para .webp, se necessário.
